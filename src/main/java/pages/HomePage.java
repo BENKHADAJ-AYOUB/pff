@@ -11,10 +11,17 @@ public class HomePage extends PageBase{
     //Web Elements
     @FindBy(xpath = "//a[@title='Automation Practice Site']")
     public WebElement logoElement;
-    @FindBy(xpath = "//p[@class='fc-button-label' and text()='Consent']")
+    @FindBy(xpath = "//button[@aria-label='Do not consent']")
     private WebElement consentCockieElement;
     @FindBy(xpath = "//ul[@id=\"main-nav\"]/li[2]/a[text()=\"My Account\"]")
     private WebElement myAccountElement;
+    //Shop element Nav
+    @FindBy(xpath = "//li[@id='menu-item-40']/a[text()='Shop']")
+    private WebElement shopElement;
+
+    //Panier element
+    @FindBy(xpath = "//li[@id='wpmenucartli']/a[@class='wpmenucart-contents' and @title='View your shopping cart']")
+    private WebElement panierElement;
 
 
 
@@ -24,8 +31,22 @@ public class HomePage extends PageBase{
     //Cliquer sur Myaccount
     public void cliquerSurMyAccount()
     {
-        Clicking(consentCockieElement);
         Clicking(myAccountElement);
+    }
+    //Cliquer sur shop
+    public void cliquerSurShop()
+    {
+        Clicking(shopElement);
+    }
+    //Cliquer sur panier
+    public void cliquerSurPanier()
+    {
+        Clicking(panierElement);
+    }
+    //Concent Cockeis
+    public void cliquerConsentCockies()
+    {
+        Clicking(consentCockieElement);
     }
 
 

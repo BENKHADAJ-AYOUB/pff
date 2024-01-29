@@ -36,19 +36,29 @@ public class MyAccountPage extends PageBase {
     public WebElement signOutElement;
     //Méthodes
     //Login
-    public void seConnecterCompte(String mail, String pswd) {
+    public void remplirFormulaireLogin(String mail, String pswd) {
         sendText(mailLoginElement, mail);
         sendText(passwordLoginElement, pswd);
         Clicking(remembermeElement);
+    }
+    //Click btn register
+    public void clickerSurBtnLogin()
+    {
         Clicking(btnLoginElement);
     }
 
     //Register
-    public void creerUnCompte(String mail, String pswd) {
+    public void remplirFormulaireRegister(String mail, String pswd) {
         sendText(mailRegisterElement, mail);
         sendText(passwordRegisterElement, pswd);
+
+    }
+    //Click btn register
+    public void clickerSurBtnRegister()
+    {
         Clicking(btnRegisterElement);
     }
+
     //Mdp oublier
     public void clickMdpOublier()
     {

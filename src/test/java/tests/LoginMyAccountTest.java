@@ -12,16 +12,16 @@ public class LoginMyAccountTest extends TestBase{
     @Test(priority = 1)
     public void verifierLinkMyAccount() {
         homePage = new HomePage(driver);
-        myAccountPage = new MyAccountPage(driver);
+        homePage.cliquerConsentCockies();
         homePage.cliquerSurMyAccount();
         Assert.assertTrue(driver.getCurrentUrl().contains("my-account"));
     }
 
     @Test(priority = 2)
     public void verifierLoginValid() {
-        homePage = new HomePage(driver);
         myAccountPage = new MyAccountPage(driver);
-        myAccountPage.seConnecterCompte("doca@gmail.com", "DocaPoste123@");
+        myAccountPage.remplirFormulaireLogin("doca@gmail.com", "DocaPoste123@");
+        myAccountPage.clickerSurBtnLogin();
         Assert.assertTrue(myAccountPage.signOutElement.getText().contains("out"));
         myAccountPage.signOut();
         Assert.assertTrue(driver.getCurrentUrl().contains("my-account"));

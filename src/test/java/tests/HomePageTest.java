@@ -13,6 +13,7 @@ public class HomePageTest extends TestBase{
     public void verifierLogo()
     {
         homePage =new HomePage(driver);
+        homePage.cliquerConsentCockies();
         myAccountPage = new MyAccountPage(driver);
         Assert.assertTrue(homePage.logoElement.getAttribute("href").contains(urlHome));
     }
