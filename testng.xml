@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="nopcommerce regression suite" >
+<suite name="nopcommerce regression suite">
     <parameter name="browser" value="headless-chrome"></parameter>
     <test name="Regression Test" preserve-order="false">
         <classes>
-            <class name="tests.CheckoutCODTest" />
+            <class name="tests.CheckoutCODTest"/>
         </classes>
     </test>
 

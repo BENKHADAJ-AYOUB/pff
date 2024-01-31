@@ -12,30 +12,31 @@ public class PageBase {
     protected WebDriver driver;
     public JavascriptExecutor jse;
 
-    public  Select select;
+    public Select select;
 
     public Actions actions;
+
     //<1>
     //Create constructor
-    public PageBase(WebDriver driver)
-    {
+    public PageBase(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
+
     //static on peut l'appeler sans créer une instance de la classe
-    protected static void Clicking(WebElement element)
-    {
+    //Cliquer sur un element
+    protected static void Clicking(WebElement element) {
         element.click();
     }
-    protected static void sendText(WebElement element,String text)
-    {
+    //Remplir un input
+    protected static void sendText(WebElement element, String text) {
         element.sendKeys(text);
     }
-    public void scrollToBottom()
-    {
+    //scrol
+    public void scrollToBottom() {
         jse.executeScript("scrollBy(0,2500)");
     }
-    public void clearInput(WebElement element)
-    {
+    //vider input
+    public void clearInput(WebElement element) {
         element.clear();
     }
 }

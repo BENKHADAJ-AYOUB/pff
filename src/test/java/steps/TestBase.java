@@ -1,5 +1,8 @@
-package tests;
+package steps;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,14 +21,20 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase extends AbstractTestNGCucumberTests {
-    protected static WebDriver driver;
+public class TestBase {
+    static WebDriver driver;
+    //Pour telecharger des fichier par exemple Order pdf
     public static String downloadPath = System.getProperty("user.dir") + "\\Downloads";
 
     public static ChromeOptions chromeOption() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications"); // Facultatif : pour désactiver les notifications de site
         options.addArguments("--disable-cookies"); // Bloquer les cookies
+        options.addArguments("--disable-popup-blocking"); // Désactiver le blocage des pop-ups
+        options.addArguments("--disable-save-password-bubble"); // Désactiver le pop-up de sauvegarde de mot de passe
+        options.addArguments("--disable-notifications"); // Désactiver les notifications
+        options.addArguments("--disable-extensions"); // Désactiver les extensions
+        options.addArguments("--disable-geolocation"); // Désactiver la géolocalisation
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default.content_settings.popups", 0);
         chromePrefs.put("download.default_directory", downloadPath);
@@ -38,15 +47,16 @@ public class TestBase extends AbstractTestNGCucumberTests {
 
         return options;
     }
-
-
-    @BeforeSuite
-    @Parameters({"browser"})
-    public void setUp(@Optional("chrome") String browserName) throws InterruptedException { //ça reste optionnel et chrome par défaut
-        switch (browserName) {
+    public static WebDriver getDriver() {
+        return driver;
+    }
+    //set up s
+    @Before
+    public void setUp() throws InterruptedException { //ça reste optionnel et chrome par défaut
+            String browserName = System.getProperty("browser", "chrome");
+            switch (browserName) {
             case "chrome":
                 driver = new ChromeDriver(chromeOption());
-
                 break;
             case "firefox":
                 driver = new FirefoxDriver();
@@ -60,20 +70,18 @@ public class TestBase extends AbstractTestNGCucumberTests {
                 driver = new ChromeDriver(option);
                 break;
         }
-        String parentWindow = driver.getWindowHandle();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-        driver.get("https://practice.automationtesting.in/");
-        // Revenez à la fenêtre parente
-        //driver.switchTo().window(parentWindow);
+       driver.get("https://practice.automationtesting.in/");
+
 
     }
 
-
-   /* @AfterSuite
-    public void stopDriver() {
+    //quiteer le driver
+    @After
+    public void stopDriver( Scenario scenario) {
         driver.quit();
-    }*/
+    }
 
     // take screenshot when the test case fail and ad it in the scrennshot folder
     @AfterMethod
