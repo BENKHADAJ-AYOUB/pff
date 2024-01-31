@@ -11,52 +11,62 @@ public class MyAccountPage extends PageBase {
 
     //Web Elements
     //Login
+    //mail
     @FindBy(id = "username")
     private WebElement mailLoginElement;
+    //password
     @FindBy(id = "password")
     private WebElement passwordLoginElement;
+    //button connexion
     @FindBy(xpath = "//input[@type='submit' and @name='login']")
     public WebElement btnLoginElement;
+    //Remember me
     @FindBy(id = "rememberme")
     private WebElement remembermeElement;
 
     //Register
+    //mail register
     @FindBy(id = "reg_email")
     private WebElement mailRegisterElement;
-    //private By passwordLogin = By.xpath("//input[@class='password']");
+    //password register
     @FindBy(id = "reg_password")
     private WebElement passwordRegisterElement;
+    //Button register
     @FindBy(xpath = "//input[@type='submit' and @name='register']")
     public WebElement btnRegisterElement;
-
-
-    @FindBy(xpath = "//p[@class='woocommerce-LostPassword lost_password']/a[contains(text(),'Lost your password')]")
-    public WebElement mdpOublierElement;
+    //sign out
     @FindBy(xpath = "//div[@class='woocommerce-MyAccount-content'] //a[contains(text(),'out')]")
     public WebElement signOutElement;
+
     //Méthodes
     //Login
-    public void seConnecterCompte(String mail, String pswd) {
+    public void remplirFormulaireLogin(String mail, String pswd) {
         sendText(mailLoginElement, mail);
         sendText(passwordLoginElement, pswd);
         Clicking(remembermeElement);
+    }
+
+    //Click btn login
+    public void clickerSurBtnLogin() {
         Clicking(btnLoginElement);
     }
 
     //Register
-    public void creerUnCompte(String mail, String pswd) {
+    //rempli formulaire register
+    public void remplirFormulaireRegister(String mail, String pswd) {
         sendText(mailRegisterElement, mail);
         sendText(passwordRegisterElement, pswd);
+
+    }
+
+    //Click btn register
+    public void clickerSurBtnRegister() {
         Clicking(btnRegisterElement);
     }
-    //Mdp oublier
-    public void clickMdpOublier()
-    {
-        Clicking(mdpOublierElement);
-    }
+
+
     //signOut
-    public void signOut()
-    {
+    public void signOut() {
         Clicking(signOutElement);
     }
 
