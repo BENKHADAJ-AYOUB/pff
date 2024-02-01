@@ -1,4 +1,4 @@
-package steps.CheckoutSteps;
+package steps.GuestCheckoutSteps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,11 +8,11 @@ import org.testng.Assert;
 import pages.*;
 import steps.TestBase;
 
-public class CheckoutCodSteps {
+public class GuestCheckoutCodSteps {
     HomePage homePage;
     PanierPage panierPage;
     ShopPage shopPage;
-    GuestInformation guestInformations;
+    GuestOrUsertInformation guestInformations;
     OrderDetailsPage orderDetailsPage;
     static WebDriver driver;
 
@@ -85,7 +85,7 @@ public class CheckoutCodSteps {
     @Then("je devrais être redirigé vers la page Checkout pour remplir le formulaire")
     public void je_devrais_être_redirigé_vers_la_page_checkout_pour_remplir_le_formulaire() throws InterruptedException {
         Assert.assertTrue((driver.getCurrentUrl().contains("checkout")));
-        guestInformations = new GuestInformation(driver);
+        guestInformations = new GuestOrUsertInformation(driver);
         guestInformations.RemplirFormulaireInfosGuest();
     }
 
@@ -99,8 +99,8 @@ public class CheckoutCodSteps {
         guestInformations.cliquerBtnPlaceOrder();
     }
 
-    @Then("La page détails commande va s'afficher")
-    public void la_page_détails_commande_va_s_afficher() {
+    @Then("La page détails commande va safficher et je verifie par le numéro de commande")
+    public void laPageDetailsCommandeVaSafficherEtJeVerifieParLeNumeroDeCommande() {
         orderDetailsPage = new OrderDetailsPage(driver);
         String numeroOrder = orderDetailsPage.odrerNumberElement.getText();
         Assert.assertTrue(driver.getCurrentUrl().contains(numeroOrder));

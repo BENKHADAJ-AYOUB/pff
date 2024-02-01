@@ -6,8 +6,8 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GuestInformation extends PageBase {
-    public GuestInformation(WebDriver driver) {
+public class GuestOrUsertInformation extends PageBase {
+    public GuestOrUsertInformation(WebDriver driver) {
         super(driver);
     }
 
@@ -64,6 +64,14 @@ public class GuestInformation extends PageBase {
     //Place order Element
     @FindBy(id = "place_order")
     private WebElement placeOrderBtnElement;
+    //checkbox create account
+
+    @FindBy(id = "createaccount")
+    private WebElement createaccountElement;
+
+    //checkbox create account
+    @FindBy(id = "account_password")
+    private WebElement account_passwordElement;
 
 
     //Méthodes
@@ -87,7 +95,13 @@ public class GuestInformation extends PageBase {
         Clicking(placeOrderBtnElement);
     }
 
-    //Rmplir le formulaire
+    //Cliquer sur checkbox create account
+    public void clickCreateAccount()
+    {
+
+    }
+
+    //Rmplir le formulaire guest
     public void RemplirFormulaireInfosGuest() throws InterruptedException {
         sendText(fisteNameElement, firsteName);
         sendText(lastNameElement, lasteName);
@@ -97,6 +111,20 @@ public class GuestInformation extends PageBase {
         sendText(adressElement, adress);
         sendText(codePostaleElement, zip);
         sendText(cityElement, city);
+    }
+    //Rmplir le formulaire User
+    public void RemplirFormulaireInfosUser() throws InterruptedException {
+        sendText(fisteNameElement, firsteName);
+        sendText(lastNameElement, lasteName);
+        sendText(mailElement, mail);
+        sendText(phoneElement, "0783353619");
+        selectCountry("France");
+        sendText(adressElement, adress);
+        sendText(codePostaleElement, zip);
+        sendText(cityElement, city);
+        Clicking(createaccountElement);
+        Thread.sleep(3000);
+        sendText(account_passwordElement,"GlwanShop123");
     }
 
 }
