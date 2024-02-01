@@ -4,7 +4,7 @@ Feature: commander Consulter et finaliser l'achat dans mon panier avec paiement 
   Je souhaite commander consulter mon panier et finaliser mon achat
   Afin de procéder au paiement en espèces à la livraison
 
-  Scenario: Commander consulter le panier et finaliser l'achat avec paiement en espèces à la livraison
+  Scenario: Commander consulter le panier et finaliser l'achat avec paiement en espèces à la livraison en tanque GUEST
     Given que je suis sur le shop
     And que j'ai ajouté des articles à mon panier
     When je navigue vers la page du panier
@@ -16,4 +16,4 @@ Feature: commander Consulter et finaliser l'achat dans mon panier avec paiement 
     Then je devrais être redirigé vers la page Checkout pour remplir le formulaire
     And je sélectionne l'option de paiement Cash on Delivery
     And je confirme la commande
-    Then La page détails commande va s'afficher
+    Then La page détails commande va safficher et je verifie par le numéro de commande
