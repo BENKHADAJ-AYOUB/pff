@@ -12,7 +12,7 @@ public class UserCheckoutCodSteps {
     HomePage homePage;
     PanierPage panierPage;
     ShopPage shopPage;
-    GuestOrUsertInformation guestInformations;
+    GuestOrUsertInformation userInformations;
     OrderDetailsPage orderDetailsPage;
     static WebDriver driver;
 
@@ -85,21 +85,20 @@ public class UserCheckoutCodSteps {
     @Then("je devrais être redirigé vers la page Checkout pour remplir le formulaire pour USER")
     public void je_devrais_être_redirigé_vers_la_page_checkout_pour_remplir_le_formulairePourUSER() throws InterruptedException {
         Assert.assertTrue((driver.getCurrentUrl().contains("checkout")));
-        guestInformations = new GuestOrUsertInformation(driver);
-        guestInformations.RemplirFormulaireInfosUser();
+        userInformations = new GuestOrUsertInformation(driver);
+        userInformations.RemplirFormulaireInfosUser();
     }
 
     @Then("je sélectionne l'option de paiement Cash on Delivery pour USER")
     public void je_sélectionne_l_option_de_paiement_cash_on_deliveryPourUSER() {
-        guestInformations.choisirCOD();
+        userInformations.choisirCOD();
     }
 
     @Then("je confirme la commande pour USER")
     public void je_confirme_la_commandePourUSER() {
-        guestInformations.cliquerBtnPlaceOrder();
+        userInformations.cliquerBtnPlaceOrder();
     }
     @Then("La page détails commande va safficher et je verifie par le numéro de commande et lurl pour USER")
-
     public void laPageDetailsCommandeVaSafficherEtJeVerifieParLeNumeroDeCommandeEtLurlPourUSER() {
         orderDetailsPage = new OrderDetailsPage(driver);
         String numeroOrder = orderDetailsPage.odrerNumberElement.getText();

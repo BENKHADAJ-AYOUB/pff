@@ -99,12 +99,14 @@ public class GuestCheckoutCodSteps {
         guestInformations.cliquerBtnPlaceOrder();
     }
 
-    @Then("La page détails commande va safficher et je verifie par le numéro de commande")
-    public void laPageDetailsCommandeVaSafficherEtJeVerifieParLeNumeroDeCommande() {
+
+    @Then("La page détails commande va safficher et je verifie par le numéro de command")
+    public void laPageDetailsCommandeVaSafficherEtJeVerifieParLeNumeroDeCommand() {
         orderDetailsPage = new OrderDetailsPage(driver);
         String numeroOrder = orderDetailsPage.odrerNumberElement.getText();
         Assert.assertTrue(driver.getCurrentUrl().contains(numeroOrder));
     }
+
 
 
 }

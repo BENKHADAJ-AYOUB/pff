@@ -111,6 +111,7 @@ public class GuestOrUsertInformation extends PageBase {
         sendText(adressElement, adress);
         sendText(codePostaleElement, zip);
         sendText(cityElement, city);
+        //Thread.sleep(3000);
     }
     //Rmplir le formulaire User
     public void RemplirFormulaireInfosUser() throws InterruptedException {
