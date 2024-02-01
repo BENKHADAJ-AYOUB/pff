@@ -1,1 +1,1 @@
-Selenium project using java, maven, testng and POM
+Selenium project using java, maven, testng, cucumber and POM
