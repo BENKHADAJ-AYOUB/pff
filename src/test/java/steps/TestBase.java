@@ -79,7 +79,7 @@ public class TestBase {
 
     //quiteer le driver
     @After
-    public void stopDriver( Scenario scenario) {
+    public void stopDriver() {
         driver.quit();
     }
 
