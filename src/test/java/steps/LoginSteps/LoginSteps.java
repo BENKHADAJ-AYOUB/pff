@@ -14,9 +14,13 @@ public class LoginSteps {
     MyAccountPage myAccountPage;
     static WebDriver driver;
 
+    public LoginSteps() {
+        driver = TestBase.getDriver();
+    }
+
     @Given("que je suis sur la page My Account pour login")
     public void que_je_suis_sur_la_page_my_account_pour_login() {
-        driver = TestBase.getDriver();
+
         homePage = new HomePage(driver);
         homePage.cliquerConsentCockies();
         homePage.cliquerSurMyAccount();
@@ -26,7 +30,7 @@ public class LoginSteps {
     @When("je saisis mon login et mon mot de passe")
     public void jeSaisisMonLoginEtMonMotDePasse() {
         myAccountPage = new MyAccountPage(driver);
-        myAccountPage.remplirFormulaireLogin("doca@gmail.com", "DocaPoste123@");
+        myAccountPage.remplirFormulaireLogin("doca1@gmail.com", "DocaPoste123@");
     }
 
     @When("je clique sur le bouton LOGIN")

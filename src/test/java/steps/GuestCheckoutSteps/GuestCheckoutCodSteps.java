@@ -14,11 +14,14 @@ public class GuestCheckoutCodSteps {
     ShopPage shopPage;
     GuestOrUsertInformation guestInformations;
     OrderDetailsPage orderDetailsPage;
-    static WebDriver driver;
+    public static WebDriver driver;
+
+    public GuestCheckoutCodSteps() {
+        this.driver = TestBase.getDriver();
+    }
 
     @Given("que je suis sur le shop")
     public void que_je_suis_sur_le_shop() {
-        driver = TestBase.getDriver();
         //Homme page
         homePage = new HomePage(driver);
         homePage.cliquerConsentCockies();

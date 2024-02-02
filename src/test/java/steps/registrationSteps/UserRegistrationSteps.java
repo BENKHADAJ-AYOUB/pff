@@ -18,6 +18,10 @@ public class UserRegistrationSteps {
     String pswd = fake.internet().password();
     static WebDriver driver;
 
+    public UserRegistrationSteps() {
+        driver = TestBase.getDriver();
+    }
+
     @Given("que je suis sur la page My Account")
     public void que_je_suis_sur_la_page_my_account() {
         driver = TestBase.getDriver();

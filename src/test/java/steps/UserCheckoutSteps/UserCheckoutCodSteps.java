@@ -16,6 +16,10 @@ public class UserCheckoutCodSteps {
     OrderDetailsPage orderDetailsPage;
     static WebDriver driver;
 
+    public UserCheckoutCodSteps() {
+        driver = TestBase.getDriver();
+    }
+
     @Given("que je suis sur le shop pour USER")
     public void que_je_suis_sur_le_shopPourUSER() {
         driver = TestBase.getDriver();

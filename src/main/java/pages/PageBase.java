@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class PageBase {
     //qui vas jouer avec les element
-    protected WebDriver driver;
+    protected static WebDriver driver;
     public JavascriptExecutor jse;
 
     public Select select;

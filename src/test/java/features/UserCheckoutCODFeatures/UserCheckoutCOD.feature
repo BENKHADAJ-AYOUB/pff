@@ -3,7 +3,7 @@ Feature: commander Consulter et finaliser l'achat dans mon panier avec paiement 
   En tant GUEST,
   Je souhaite commander consulter mon panier et finaliser mon achat
   Afin de procéder au paiement en espèces à la livraison
-
+@tag4
   Scenario: Commander consulter le panier et finaliser l'achat avec paiement en espèces à la livraison en tant que User
     Given que je suis sur le shop pour USER
     And que j'ai ajouté des articles à mon panier pour USER
