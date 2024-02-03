@@ -16,7 +16,7 @@ public class UserRegistrationSteps {
     Faker fake = new Faker();
     String mail = fake.internet().emailAddress();
     String pswd = "TestDoca123@";
-    static WebDriver driver;
+    WebDriver driver;
 
     public UserRegistrationSteps() {
         driver = TestBase.getDriver();
@@ -24,7 +24,7 @@ public class UserRegistrationSteps {
 
     @Given("que je suis sur la page My Account")
     public void que_je_suis_sur_la_page_my_account() {
-        driver = TestBase.getDriver();
+
         homePage = new HomePage(driver);
         homePage.cliquerConsentCockies();
         myAccountPage = new MyAccountPage(driver);

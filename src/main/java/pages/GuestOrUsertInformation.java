@@ -67,7 +67,7 @@ public class GuestOrUsertInformation extends PageBase {
     private WebElement radioCODElement;
     //Place order Element
     @FindBy(id = "place_order")
-    private WebElement placeOrderBtnElement;
+    public WebElement placeOrderBtnElement;
     //checkbox create account
 
     @FindBy(id = "createaccount")
@@ -79,7 +79,7 @@ public class GuestOrUsertInformation extends PageBase {
 
 
     //Méthodes
-    public void selectCountry(String countryName) throws InterruptedException {
+    public void selectCountry(String countryName){
         // Cliquez sur le menu déroulant Select2 pour l'ouvrir
         Clicking(dropdownOpenerCountryElment);
         // Attendez que le champ de recherche soit visible et saisissez le nom du pays
@@ -91,11 +91,14 @@ public class GuestOrUsertInformation extends PageBase {
 
     //Choisir Cash on delivry
     public void choisirCOD() {
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(radioCODElement));
         Clicking(radioCODElement);
     }
 
     //cliquer btn place order
     public void cliquerBtnPlaceOrder() {
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(placeOrderBtnElement));
+
         Clicking(placeOrderBtnElement);
     }
 
@@ -106,7 +109,7 @@ public class GuestOrUsertInformation extends PageBase {
     }
 
     //Rmplir le formulaire guest
-    public void RemplirFormulaireInfosGuest() throws InterruptedException {
+    public void RemplirFormulaireInfosGuest()  {
         sendText(fisteNameElement, firsteName);
         sendText(lastNameElement, lasteName);
         sendText(mailElement, mail);
@@ -117,7 +120,7 @@ public class GuestOrUsertInformation extends PageBase {
         sendText(cityElement, city);
     }
     //Rmplir le formulaire User
-    public void RemplirFormulaireInfosUser() throws InterruptedException {
+    public void RemplirFormulaireInfosUser() {
         sendText(fisteNameElement, firsteName);
         sendText(lastNameElement, lasteName);
         sendText(mailElement, mail);

@@ -13,7 +13,7 @@ public class GuestCheckoutCodSteps {
     ShopPage shopPage;
     GuestOrUsertInformation guestInformations;
     OrderDetailsPage orderDetailsPage;
-    public static WebDriver driver;
+    WebDriver driver;
 
     public GuestCheckoutCodSteps() {
         this.driver = TestBase.getDriver();

@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json","junit:target/cucumber.xml"},
         features = "src/test/java/features",
         glue = {"steps"},
-        tags = "@tag1 or @tag3 or @tag4"// or @tag3 or @tag4
+        tags = "@tag4 or @tag3 or @tag1"// or @tag3 or @tag4
 
 
 )

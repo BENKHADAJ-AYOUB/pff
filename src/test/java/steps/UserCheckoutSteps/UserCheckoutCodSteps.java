@@ -14,7 +14,7 @@ public class UserCheckoutCodSteps {
     ShopPage shopPage;
     GuestOrUsertInformation userInformations;
     OrderDetailsPage orderDetailsPage;
-    static WebDriver driver;
+    WebDriver driver;
 
     public UserCheckoutCodSteps() {
         driver = TestBase.getDriver();
@@ -22,7 +22,6 @@ public class UserCheckoutCodSteps {
 
     @Given("que je suis sur le shop pour USER")
     public void que_je_suis_sur_le_shopPourUSER() {
-        driver = TestBase.getDriver();
         //Homme page
         homePage = new HomePage(driver);
         homePage.cliquerConsentCockies();
@@ -64,7 +63,7 @@ public class UserCheckoutCodSteps {
     }
 
     @When("je clique sur le bouton de mise à jour pour USER")
-    public void je_clique_sur_le_bouton_de_mise_à_jourPourUSER() throws InterruptedException {
+    public void je_clique_sur_le_bouton_de_mise_à_jourPourUSER() {
         panierPage.cliquerUpdatePanier();
 
 
@@ -100,6 +99,8 @@ public class UserCheckoutCodSteps {
 
     @Then("je confirme la commande pour USER")
     public void je_confirme_la_commandePourUSER() {
+        //new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(placeOrderBtnElement));
+
         userInformations.cliquerBtnPlaceOrder();
     }
     @Then("La page détails commande va safficher et je verifie par le numéro de commande et lurl pour USER")
