@@ -1,5 +1,4 @@
 package steps.GuestCheckoutSteps;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -63,10 +62,8 @@ public class GuestCheckoutCodSteps {
     }
 
     @When("je clique sur le bouton de mise à jour")
-    public void je_clique_sur_le_bouton_de_mise_à_jour() throws InterruptedException {
+    public void je_clique_sur_le_bouton_de_mise_à_jour()  {
         panierPage.cliquerUpdatePanier();
-        Thread.sleep(3000);
-
     }
 
     @Then("la quantité et le prix de l'article devrait être mise à jour")

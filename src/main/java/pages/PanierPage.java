@@ -1,12 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -16,8 +14,9 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClick
 public class PanierPage extends PageBase {
     public PanierPage(WebDriver driver) {
         super(driver);
+        //this.driver = driver;
     }
-
+   // WebDriver driver;
     //WebElements
     //Qte Eelement
     @FindBy(xpath = "//div[@class=\"quantity\"]/input[@type='number']")
@@ -42,15 +41,11 @@ public class PanierPage extends PageBase {
     //Cliquer sur update basket
     public void cliquerUpdatePanier() {
         Clicking(updatePanierElement);
-        //WebDriverWait wait =  new WebDriverWait(driver, Duration.ofSeconds(20));
-        //wait.until(ExpectedConditions.visibilityOf(totalElement));
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.textToBePresentInElement(totalElement,"₹900.00"));
     }
 
     //Cliquer sur process checkout
     public void cliquerCheckout() {
-       // new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class=\"wc-proceed-to-checkout\"]/a[@class='checkout-button button alt wc-forward']")));
-        //new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(btnCheckoutElement));
-
         Clicking(btnCheckoutElement);
     }
 

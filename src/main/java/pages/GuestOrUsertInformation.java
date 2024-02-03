@@ -5,6 +5,10 @@ import org.openqa.selenium.WebDriver;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class GuestOrUsertInformation extends PageBase {
     public GuestOrUsertInformation(WebDriver driver) {
@@ -79,7 +83,7 @@ public class GuestOrUsertInformation extends PageBase {
         // Cliquez sur le menu déroulant Select2 pour l'ouvrir
         Clicking(dropdownOpenerCountryElment);
         // Attendez que le champ de recherche soit visible et saisissez le nom du pays
-        Thread.sleep(3000);
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(searchAtDropdown));
         sendText(searchAtDropdown, countryName);
         //Entrer Clavier
         searchAtDropdown.sendKeys(Keys.RETURN);
@@ -111,7 +115,6 @@ public class GuestOrUsertInformation extends PageBase {
         sendText(adressElement, adress);
         sendText(codePostaleElement, zip);
         sendText(cityElement, city);
-        //Thread.sleep(3000);
     }
     //Rmplir le formulaire User
     public void RemplirFormulaireInfosUser() throws InterruptedException {
@@ -124,7 +127,7 @@ public class GuestOrUsertInformation extends PageBase {
         sendText(codePostaleElement, zip);
         sendText(cityElement, city);
         Clicking(createaccountElement);
-        Thread.sleep(3000);
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(account_passwordElement));
         sendText(account_passwordElement,"GlwanShop123");
     }
 

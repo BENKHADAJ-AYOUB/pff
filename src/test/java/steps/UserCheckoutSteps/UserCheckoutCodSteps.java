@@ -66,7 +66,7 @@ public class UserCheckoutCodSteps {
     @When("je clique sur le bouton de mise à jour pour USER")
     public void je_clique_sur_le_bouton_de_mise_à_jourPourUSER() throws InterruptedException {
         panierPage.cliquerUpdatePanier();
-        Thread.sleep(3000);
+
 
     }
 

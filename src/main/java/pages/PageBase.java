@@ -20,6 +20,7 @@ public class PageBase {
     //Create constructor
     public PageBase(WebDriver driver) {
         PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
 
     //static on peut l'appeler sans créer une instance de la classe

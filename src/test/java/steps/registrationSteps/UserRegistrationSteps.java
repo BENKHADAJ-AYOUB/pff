@@ -15,7 +15,7 @@ public class UserRegistrationSteps {
     MyAccountPage myAccountPage;
     Faker fake = new Faker();
     String mail = fake.internet().emailAddress();
-    String pswd = fake.internet().password();
+    String pswd = "TestDoca123@";
     static WebDriver driver;
 
     public UserRegistrationSteps() {

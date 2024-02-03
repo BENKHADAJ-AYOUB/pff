@@ -10,19 +10,17 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
+
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utilities.Helper;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    static WebDriver driver;
+     static WebDriver driver;
     //Pour telecharger des fichier par exemple Order pdf
     public static String downloadPath = System.getProperty("user.dir") + "\\Downloads";
 
@@ -79,7 +77,7 @@ public class TestBase {
 
     //quiteer le driver
     @After
-    public void stopDriver() {
+    public void stopDriver( ) {
         driver.quit();
     }
 
