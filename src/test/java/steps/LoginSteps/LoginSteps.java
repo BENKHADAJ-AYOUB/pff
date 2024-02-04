@@ -5,17 +5,21 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.MyAccountPage;
 import steps.TestBase;
+import org.testng.asserts.SoftAssert;
 
 public class LoginSteps {
     HomePage homePage;
     MyAccountPage myAccountPage;
     static WebDriver driver;
+    SoftAssert softAssert;
 
     public LoginSteps() {
         driver = TestBase.getDriver();
+        softAssert = new SoftAssert();
     }
 
     @Given("que je suis sur la page My Account pour login")
@@ -24,7 +28,7 @@ public class LoginSteps {
         homePage = new HomePage(driver);
         homePage.cliquerConsentCockies();
         homePage.cliquerSurMyAccount();
-        Assert.assertTrue(driver.getCurrentUrl().contains("my-account"));
+        softAssert.assertTrue(driver.getCurrentUrl().contains("my-account"));
     }
 
     @When("je saisis mon login et mon mot de passe")
@@ -36,14 +40,14 @@ public class LoginSteps {
     @When("je clique sur le bouton LOGIN")
     public void je_clique_sur_le_bouCheckton_login() {
         myAccountPage.clickerSurBtnLogin();
+        softAssert.assertTrue(myAccountPage.signOutElement.getText().contains("out"));
 
     }
 
     @Then("le Dashboard doit s'afficher pour login avec signOut")
     public void le_dashboard_doit_s_afficher_pour_login_avec_sign_out() {
-        Assert.assertTrue(myAccountPage.signOutElement.getText().contains("out"));
         myAccountPage.signOut();
-        Assert.assertTrue(driver.getCurrentUrl().contains("my-account"));
+        softAssert.assertTrue(driver.getCurrentUrl().contains("my-account"));
     }
 
 
