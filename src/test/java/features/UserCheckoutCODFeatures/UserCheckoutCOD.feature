@@ -1,10 +1,10 @@
-Feature: commander Consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
-
-  En tant GUEST,
-  Je souhaite commander consulter mon panier et finaliser mon achat
-  Afin de procéder au paiement en espèces à la livraison
-@tag4
-  Scenario: Commander consulter le panier et finaliser l'achat avec paiement en espèces à la livraison en tant que User
+@POECSOFT23-810
+Feature:  Vérifier qu'un utilisateur peux commander Consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
+    En tant User,
+    Je souhaite commander consulter mon panier et finaliser mon achat
+    Afin de procéder au paiement en espèces à la livraison
+  @POECSOFT23-809 @tchach
+  Scenario:  Vérifier qu'un utilisateur peux commander Consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
     Given que je suis sur le shop pour USER
     And que j'ai ajouté des articles à mon panier pour USER
     When je navigue vers la page du panier pour USER
@@ -17,3 +17,4 @@ Feature: commander Consulter et finaliser l'achat dans mon panier avec paiement 
     And je sélectionne l'option de paiement Cash on Delivery pour USER
     And je confirme la commande pour USER
     Then La page détails commande va safficher et je verifie par le numéro de commande et lurl pour USER
+

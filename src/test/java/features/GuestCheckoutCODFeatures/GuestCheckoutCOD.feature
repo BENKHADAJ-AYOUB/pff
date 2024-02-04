@@ -1,10 +1,11 @@
-Feature: commander Consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
-
+@POECSOFT23-810
+Feature: Vérifier qu'un guest peux commander consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
   En tant qu'utilisateur GUEST,
   Je souhaite commander consulter mon panier et finaliser mon achat
   Afin de procéder au paiement en espèces à la livraison
-@tag1
-  Scenario: Commander consulter le panier et finaliser l'achat avec paiement en espèces à la livraison en tanque GUEST
+
+  @POECSOFT23-806 @tchach
+  Scenario: Vérifier qu'un guest peux commander consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
     Given que je suis sur le shop
     And que j'ai ajouté des articles à mon panier
     When je navigue vers la page du panier
