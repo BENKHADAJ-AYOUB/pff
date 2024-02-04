@@ -37,6 +37,13 @@ public class PanierPage extends PageBase {
     @FindBy(xpath = "//div[@class=\"wc-proceed-to-checkout\"]/a[@class='checkout-button button alt wc-forward']")
     public WebElement btnCheckoutElement;
 
+    //msg basket is empty
+    @FindBy(xpath = "//p[@class='cart-empty']")
+    public WebElement emptyBasketElement;
+    //remove product
+    @FindBy(xpath = "//a[@class='remove']")
+    public WebElement removeProductElement;
+
     //Méthods
     //Cliquer sur update basket
     public void cliquerUpdatePanier() {
@@ -53,6 +60,11 @@ public class PanierPage extends PageBase {
     public void modifierQte() {
         clearInput(qteElement);
         sendText(qteElement, "2");
+    }
+    //remove product
+    public void removeProduct()
+    {
+        Clicking(removeProductElement);
     }
 
 }

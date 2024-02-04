@@ -1,11 +1,10 @@
 package pages;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import com.github.javafaker.Faker;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -21,7 +20,7 @@ public class GuestOrUsertInformation extends PageBase {
     String lasteName = fake.name().lastName();
     String mail = fake.internet().emailAddress();
     String adress = fake.address().streetAddress();
-    String zip = fake.address().zipCode();
+    String zip = "95130";
     String city = fake.address().city();
 
     //WebElmenets
@@ -76,14 +75,19 @@ public class GuestOrUsertInformation extends PageBase {
     //checkbox create account
     @FindBy(id = "account_password")
     private WebElement account_passwordElement;
-
+    FluentWait<WebDriver> wait = new FluentWait<>(driver)
+            .withTimeout(Duration.ofSeconds(30)) // Définit le temps maximum d'attente
+            .pollingEvery(Duration.ofSeconds(1)) // Définit la fréquence de vérification de la condition
+            .ignoring(NoSuchElementException.class); // Ignore cette exception pendant l'attente
 
     //Méthodes
     public void selectCountry(String countryName){
         // Cliquez sur le menu déroulant Select2 pour l'ouvrir
         Clicking(dropdownOpenerCountryElment);
         // Attendez que le champ de recherche soit visible et saisissez le nom du pays
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(searchAtDropdown));
+        //new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(searchAtDropdown));
+        wait.until(ExpectedConditions.visibilityOf(searchAtDropdown));
+
         sendText(searchAtDropdown, countryName);
         //Entrer Clavier
         searchAtDropdown.sendKeys(Keys.RETURN);
@@ -91,13 +95,16 @@ public class GuestOrUsertInformation extends PageBase {
 
     //Choisir Cash on delivry
     public void choisirCOD() {
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(radioCODElement));
+        //new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(By.id("payment_method_cod")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("payment_method_cod")));
+
         Clicking(radioCODElement);
     }
 
     //cliquer btn place order
     public void cliquerBtnPlaceOrder() {
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(placeOrderBtnElement));
+        //new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(By.id("place_order")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("place_order")));
 
         Clicking(placeOrderBtnElement);
     }
@@ -130,7 +137,8 @@ public class GuestOrUsertInformation extends PageBase {
         sendText(codePostaleElement, zip);
         sendText(cityElement, city);
         Clicking(createaccountElement);
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(account_passwordElement));
+        //new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOfElementLocated(By.id("account_password")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("account_password")));
         sendText(account_passwordElement,"GlwanShop123");
     }
 

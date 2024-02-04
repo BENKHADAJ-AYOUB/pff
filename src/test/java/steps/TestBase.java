@@ -1,6 +1,7 @@
 package steps;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -50,8 +51,14 @@ public class TestBase {
     }
     //set up s
     @Before
-    public void setUp() throws InterruptedException { //ça reste optionnel et chrome par défaut
-            String browserName = System.getProperty("browser", "chrome");
+    public void setUp(Scenario scenario)  { //ça reste optionnel et chrome par défaut
+
+        String browserName = "chrome"; // Valeur par défaut
+        if (scenario.getSourceTagNames().contains("@Firefox")) {
+            browserName = "firefox";
+        } else if (scenario.getSourceTagNames().contains("@Chrome")) {
+            browserName = "chrome";
+        }
             switch (browserName) {
             case "chrome":
                 driver = new ChromeDriver(chromeOption());
@@ -77,8 +84,11 @@ public class TestBase {
 
     //quiteer le driver
     @After
-    public void stopDriver( ) {
+    public void stopDriver() {
         driver.quit();
+
+
+
     }
 
     // take screenshot when the test case fail and ad it in the scrennshot folder
