@@ -1,4 +1,4 @@
-@POECSOFT23-814
+@POECSOFT23-810
 Feature: vérifier qu'un utilisateur peut modifier la quantité d'un produit ajouter au panier puis le supprimer
   En tant qu'utilisateur,
     Je souhaite modifier supprimer mon panier

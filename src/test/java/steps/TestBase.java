@@ -92,12 +92,12 @@ public class TestBase {
     }
 
     // take screenshot when the test case fail and ad it in the scrennshot folder
-    @AfterMethod
-    public void screnShotOnfailure(ITestResult result) throws IOException {
-        if (result.getStatus() == ITestResult.FAILURE) {
+    @AfterStep
+    public void screnShotOnfailure(Scenario scenario) throws IOException {
+        if (scenario.isFailed()) {
             System.out.println("FAILURE");
             System.out.println("Take ScrenShots ...");
-            Helper.captureScreenshot(driver, result.getName());
+            Helper.captureScreenshot(driver, scenario.getName());
         }
     }
 
