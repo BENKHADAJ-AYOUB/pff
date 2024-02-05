@@ -1,10 +1,10 @@
 @POECSOFT23-810
-Feature:  Vérifier qu'un utilisateur peux commander Consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
+Feature:  Vérifier qu'un utilisateur peux commander Consulter et finaliser l'achat dans son panier avec paiement en espèces à la livraison
     En tant User,
     Je souhaite commander consulter mon panier et finaliser mon achat
     Afin de procéder au paiement en espèces à la livraison
   @POECSOFT23-809 @tchach
-  Scenario:  Vérifier qu'un utilisateur peux commander Consulter et finaliser l'achat dans mon panier avec paiement en espèces à la livraison
+  Scenario:  Vérifier qu'un utilisateur peux commander Consulter et finaliser l'achat dans son panier avec paiement en espèces à la livraison
     Given que je suis sur le shop pour USER
     And que j'ai ajouté des articles à mon panier pour USER
     When je navigue vers la page du panier pour USER
