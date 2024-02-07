@@ -34,7 +34,7 @@ public class LoginSteps {
     @When("je saisis mon login et mon mot de passe")
     public void jeSaisisMonLoginEtMonMotDePasse() {
         myAccountPage = new MyAccountPage(driver);
-        myAccountPage.remplirFormulaireLogin("doca1@gmail.com", "DocaPoste123@");
+        myAccountPage.remplirFormulaireLogin("testdoca200@gmail.com", "DocaPoste123@");
     }
 
     @When("je clique sur le bouton LOGIN")

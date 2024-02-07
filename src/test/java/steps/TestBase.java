@@ -4,7 +4,6 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,13 +14,14 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import utilities.Helper;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-     static WebDriver driver;
+    static WebDriver driver;
     //Pour telecharger des fichier par exemple Order pdf
     public static String downloadPath = System.getProperty("user.dir") + "\\Downloads";
 
@@ -46,12 +46,14 @@ public class TestBase {
 
         return options;
     }
+
     public static WebDriver getDriver() {
         return driver;
     }
+
     //set up s
     @Before
-    public void setUp(Scenario scenario)  { //ça reste optionnel et chrome par défaut
+    public void setUp(Scenario scenario) { //ça reste optionnel et chrome par défaut
 
         String browserName = "chrome"; // Valeur par défaut
         if (scenario.getSourceTagNames().contains("@Firefox")) {
@@ -59,7 +61,7 @@ public class TestBase {
         } else if (scenario.getSourceTagNames().contains("@Chrome")) {
             browserName = "chrome";
         }
-            switch (browserName) {
+        switch (browserName) {
             case "chrome":
                 driver = new ChromeDriver(chromeOption());
                 break;
@@ -77,7 +79,7 @@ public class TestBase {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-       driver.get("https://practice.automationtesting.in/");
+        driver.get("https://practice.automationtesting.in/");
 
 
     }
@@ -86,7 +88,6 @@ public class TestBase {
     @After
     public void stopDriver() {
         driver.quit();
-
 
 
     }
